@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "axios": "^0.26.0",
+    "chalk": "^2.4.2",
+    "colors": "^1.4.0",
+    "discord-backup": "^3.0.1",
+    "discord.js": "^13.6.0",
+    "get": "^1.4.0",
+    "glob": "^7.2.0",
+    "moment": "^2.29.1",
+    "mongoose": "^6.2.4",
+    "sourcebin": "^4.3.5"
+  },
+  "main": "index.js",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}

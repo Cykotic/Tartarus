@@ -1,0 +1,44 @@
+const {
+    MessageEmbed,
+    Message
+} = require("discord.js")
+const malScraper = require('mal-scraper')
+
+module.exports = {
+    name: "anime",
+    aliases: ['t'],
+    /**
+     *
+     * @param {Client} client
+     * @param {Message} message
+     * @param {String[]} args
+     */
+    run: async (client, message, args) => {
+
+        const search = `${args}`;
+        if (!search) return message.channel.send({
+            embeds: [
+                new MessageEmbed()
+                .setDescription("Please type some anime to search!")
+                .setColor("DARK_VIVID_PINK")
+            ]
+        })
+
+        malScraper.getInfoFromName(search)
+            .then((data) => {
+
+                return message.channel.send({
+                    embeds: [
+
+                        new MessageEmbed()
+                        .setThumbnail(data.picture)
+                        .setColor(0x680987)
+                        .addFields({
+                            name: `Search Result For: ${args.slice(",").join(' ')}`,
+                            value: `ENGLISH TITLE: ${data.englishTitle}\nTYPE: ${data.type}\nEPISODES: ${data.episodes}`
+                        })
+                    ]
+                })
+            })
+    },
+};
